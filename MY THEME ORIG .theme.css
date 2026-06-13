@@ -1,0 +1,331 @@
+/**
+ * @name by cosx v2.3
+ * @description пепельно-полуночная мягкая тема для discord. nitro-вайб без неона.
+ * @author custom (base: refact0r/midnight-discord)
+ * @version 1.3.0
+*/
+
+/* import theme modules */
+@import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
+
+/* import Storopia font */
+@import url('https://fonts.cdnfonts.com/css/storopia');
+
+body {
+    /* font */
+    --font: 'Storopia', 'Figtree', sans-serif;
+    --code-font: 'JetBrains Mono', monospace;
+    font-weight: 400;
+
+    /* sizes */
+    --gap: 14px;
+    --divider-thickness: 3px;
+    --border-thickness: 1px;
+
+    /* border radius — сильно скруглённые */
+    --border-radius-sm: 10px;
+    --border-radius: 16px;
+    --border-radius-lg: 20px;
+
+    /* animations */
+    --animations: on;
+    --list-item-transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --dms-icon-svg-transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --border-hover-transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* top bar */
+    --top-bar-height: var(--gap);
+    --top-bar-button-position: titlebar;
+    --top-bar-title-position: off;
+    --subtle-top-bar-title: off;
+
+    /* window controls */
+    --custom-window-controls: on;
+    --window-control-size: 14px;
+
+    /* dms icon */
+    --custom-dms-icon: custom;
+    --dms-icon-svg-url: url('https://refact0r.github.io/midnight-discord/assets/Font_Awesome_5_solid_moon.svg');
+    --dms-icon-svg-size: 85%;
+    --dms-icon-color-before: var(--icon-subtle);
+    --dms-icon-color-after: var(--white);
+    --custom-dms-background: off;
+
+    /* background */
+    
+    
+
+    /* transparency */
+    --transparency-tweaks: on;
+    --remove-bg-layer: off;
+    --panel-blur: on;
+    --blur-amount: 8px;
+    --bg-floating: hsla(210, 6%, 13%, 0.95); /* плавающие панели чуть непрозрачнее */
+
+    /* chatbar */
+    --custom-chatbar: on;
+    --chatbar-height: 50px;
+
+    /* other */
+    --small-user-panel: on;
+}
+
+/* color options */
+:root {
+    --colors: on;
+
+    /* text colors — пепельно-приглушённые */
+    --text-0: var(--bg-4);
+    --text-1: hsl(220, 10%, 90%);       /* почти белый, но не резкий */
+    --text-2: hsl(220, 8%, 68%);        /* заголовки */
+    --text-3: hsl(220, 7%, 55%);        /* обычный текст */
+    --text-4: hsl(220, 6%, 38%);        /* иконки, каналы */
+    --text-5: hsl(220, 5%, 24%);        /* приглушённые элементы */
+
+    /* фоны — полупрозрачные, для работы panel-blur */
+    --bg-1: hsla(210, 6%, 22%, 0.55);
+    --bg-2: hsla(210, 6%, 17%, 0.50);
+    --bg-3: hsla(210, 6%, 13%, 0.45);   /* панели, сайдбар */
+    --bg-4: hsla(210, 6%, 9%,  0.40);   /* основной фон чуть плотнее */
+    --hover: hsla(210, 8%, 50%, 0.08);
+    --active: hsla(210, 8%, 50%, 0.15);
+    --active-2: hsla(210, 8%, 50%, 0.22);
+    --message-hover: hsla(0, 0%, 0%, 0.07);
+
+    /* акцент — приглушённый пепельно-лавандовый (не яркий) */
+    --accent-1: hsl(240, 12%, 72%);
+    --accent-2: hsl(240, 11%, 62%);
+    --accent-3: hsl(240, 10%, 52%);
+    --accent-4: hsl(240, 10%, 44%);
+    --accent-5: hsl(240, 10%, 36%);
+    --accent-new: var(--accent-2);
+
+    /* упоминания — мягкие */
+    --mention: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 88%) 40%, transparent);
+    --mention-hover: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 93%) 40%, transparent);
+    --reply: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 90%) 40%, transparent);
+    --reply-hover: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 95%) 40%, transparent);
+
+    /* статусы — приглушённые, без неона */
+    --online: hsl(150, 18%, 52%);
+    --dnd: hsl(0, 18%, 52%);
+    --idle: hsl(38, 20%, 55%);
+    --streaming: hsl(270, 14%, 58%);
+    --offline: var(--text-5);
+
+    /* границы — мягкие, полупрозрачные */
+    --border-light: hsla(210, 8%, 60%, 0.08);
+    --border: hsla(210, 8%, 60%, 0.13);
+    --border-hover: hsla(210, 8%, 60%, 0.20);
+    --button-border: hsla(220, 0%, 100%, 0.07);
+
+    /* базовые цвета (приглушённые) */
+    --red-1: oklch(68% 0.08 10);
+    --red-2: oklch(62% 0.08 10);
+    --red-3: oklch(57% 0.08 10);
+    --red-4: oklch(52% 0.08 10);
+    --red-5: oklch(47% 0.08 10);
+
+    --green-1: oklch(66% 0.08 165);
+    --green-2: oklch(60% 0.08 165);
+    --green-3: oklch(55% 0.08 165);
+    --green-4: oklch(50% 0.08 165);
+    --green-5: oklch(45% 0.08 165);
+
+    --blue-1: oklch(68% 0.07 240);
+    --blue-2: oklch(62% 0.07 240);
+    --blue-3: oklch(57% 0.07 240);
+    --blue-4: oklch(52% 0.07 240);
+    --blue-5: oklch(47% 0.07 240);
+
+    --yellow-1: oklch(72% 0.08 88);
+    --yellow-2: oklch(67% 0.08 88);
+    --yellow-3: oklch(62% 0.08 88);
+    --yellow-4: oklch(57% 0.08 88);
+    --yellow-5: oklch(52% 0.08 88);
+
+    --purple-1: oklch(68% 0.08 305);
+    --purple-2: oklch(62% 0.08 305);
+    --purple-3: oklch(57% 0.08 305);
+    --purple-4: oklch(52% 0.08 305);
+    --purple-5: oklch(47% 0.08 305);
+}
+
+/* ═══════════════════════════════════════════════════════
+   NITRO ВАЙБ v2.2 — без неона, мягко и богато
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Глобальные плавные переходы ───────────────────────── */
+* {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* ── Chatbar — стильное поле ввода ───────────────────────
+   Backdrop blur + тонкая лавандовая граница при фокусе */
+[class*="channelTextArea_"] {
+    background: hsla(210, 6%, 14%, 0.6) !important;
+    backdrop-filter: blur(12px) !important;
+    border-radius: 18px !important;
+    border: 1px solid hsla(240, 10%, 55%, 0.15) !important;
+    transition:
+        border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow   0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+[class*="channelTextArea_"]:focus-within {
+    border-color: hsla(240, 12%, 65%, 0.40) !important;
+    box-shadow: 0 0 0 3px hsla(240, 12%, 65%, 0.08) !important;
+}
+
+/* Кнопки в chatbar при ховере */
+[class*="channelTextArea_"] [class*="button_"] {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity  0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+[class*="channelTextArea_"] [class*="button_"]:hover {
+    transform: scale(1.12) !important;
+    opacity: 1 !important;
+}
+
+/* ── Hover эффекты — каналы/сервера ─────────────────────
+   Плавный scale + мягкое свечение акцента */
+[class*="listItem_"] [class*="link_"],
+[class*="channel_"] [class*="link_"] {
+    transition:
+        background 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+        transform  0.2s  cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border-radius: 8px !important;
+}
+[class*="listItem_"] [class*="link_"]:hover,
+[class*="channel_"] [class*="link_"]:hover {
+    transform: translateX(2px) !important;
+}
+
+/* Иконки серверов */
+[class*="wrapper_"][class*="guild"] {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+[class*="wrapper_"][class*="guild"]:hover {
+    transform: scale(1.08) translateY(-1px) !important;
+}
+
+/* ── Сообщения — hover с мягкой подсветкой ──────────────*/
+[class*="message_"]:not([class*="mentioned"]) {
+    transition:
+        background 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        transform  0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border-radius: 8px !important;
+}
+[class*="message_"]:not([class*="mentioned"]):hover {
+    transform: translateX(1px) !important;
+}
+
+/* ── Кнопки — мягкий scale ───────────────────────────── */
+[class*="button_"]:not([class*="channelTextArea_"] [class*="button_"]) {
+    transition:
+        transform  0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        background 0.2s ease !important;
+}
+[class*="button_"]:not([class*="channelTextArea_"] [class*="button_"]):hover {
+    transform: translateY(-1px) scale(1.02) !important;
+    box-shadow: 0 4px 12px hsla(240, 10%, 30%, 0.25) !important;
+}
+[class*="button_"]:not([class*="channelTextArea_"] [class*="button_"]):active {
+    transform: translateY(0px) scale(0.98) !important;
+}
+
+/* ── Модалки и попапы — плавное появление ────────────── */
+[class*="layerContainer_"] > [class*="layer_"] {
+    animation: modal-in 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes modal-in {
+    from {
+        opacity: 0;
+        transform: scale(0.96) translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* ── Tooltip — красивее ──────────────────────────────── */
+[class*="tooltip_"] {
+    backdrop-filter: blur(8px) !important;
+    background: hsla(210, 8%, 16%, 0.92) !important;
+    border: 1px solid hsla(240, 10%, 55%, 0.15) !important;
+    border-radius: 10px !important;
+    font-size: 12px !important;
+    animation: tooltip-in 0.15s ease both !important;
+}
+@keyframes tooltip-in {
+    from { opacity: 0; transform: translateY(3px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+/* ── Скроллбар — тонкий и мягкий ────────────────────── */
+::-webkit-scrollbar {
+    width: 3px !important;
+}
+::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+::-webkit-scrollbar-thumb {
+    background: hsla(240, 10%, 55%, 0.25) !important;
+    border-radius: 99px !important;
+    transition: background 0.2s ease !important;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: hsla(240, 10%, 60%, 0.45) !important;
+}
+
+/* ── Анимация появления сообщений в чате ─────────────
+   Blur + Slide + Fade — как в Telegram.
+   Каждое новое сообщение плавно вылетает снизу. */
+@keyframes msg-appear {
+    0% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+        filter: blur(4px);
+    }
+    60% {
+        filter: blur(0px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0px);
+    }
+}
+
+/* Применяем к новым сообщениям */
+[class*="message_"][class*="groupStart_"],
+[class*="message_"]:last-child {
+    animation: msg-appear 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── Анимация текста в chatbar при вводе ─────────────
+   Это делает плагин TypeAnimator.plugin.js (лежит рядом).
+   Здесь только вспомогательные стили для него. */
+.ta-char {
+    display: inline-block;
+    animation: ta-char-in 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+    will-change: transform, opacity, filter;
+}
+@keyframes ta-char-in {
+    0% {
+        opacity: 0;
+        transform: translateY(6px) scale(0.85) rotate(-2deg);
+        filter: blur(3px);
+    }
+    70% {
+        filter: blur(0px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0deg);
+        filter: blur(0px);
+    }
+}
+
